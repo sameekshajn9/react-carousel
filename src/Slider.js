@@ -1,17 +1,26 @@
-import React, { Component, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import CaroselComponent from './CaroselComponent';
 import NavigateArrow from './NavigateArrow';
 import { Directions } from "./Constants";
+import payPalImage from "./images/payPal.png";
 
 const Slider = () => {
     const [activeIndex, setActiveIndex] = useState(1);
     const [direction, setDirection] = useState(Directions.showPrev);
     const [products, setProducts] = useState([]);
+    const [filters, setFilters] = useState([]);
+    const [selectedFilter, setSelectedFilter] = useState("All");
     const [loading, setLoading] = useState(true);
+
+
+    let filteredProducts = products;
+    if (selectedFilter !== "All") {
+        filteredProducts = products.filter(f => f.category === selectedFilter)
+    }
 
     const goToPrevSlide = () => {
         let index = activeIndex;
-        let length = products.length;
+        let length = filteredProducts.length;
         if (index < 1) {
             index = length - 1;
         }
@@ -24,7 +33,7 @@ const Slider = () => {
 
     const goToNextSlide = () => {
         let index = activeIndex;
-        let length = products.length;
+        let length = filteredProducts.length;
         if (index === length - 1) {
             index = 0
         }
@@ -39,14 +48,28 @@ const Slider = () => {
         .then(res => res.json())
         .then(json => {
             setProducts(json);
-            setLoading(false)
+            setLoading(false);
+            const categories = ['All', ... new Set(json.map(m => m.category))];
+            setFilters(categories);
         }), [])
+
 
     if (loading) {
         return <div class="loader"></div>
     }
+
     return (
         <div className='slider'>
+            <img src={payPalImage} />
+            <div className='filter'>
+                <label for="category-filter">Filter by category</label>
+                <select name="category-filter" onChange={(event) => {
+                    setActiveIndex(1)
+                    setSelectedFilter(event.target.value)
+                }}>
+                    {filters.map(m => <option value={m}>{m}</option>)}
+                </select>
+            </div>
             <div className='slider-items'>
                 <NavigateArrow
                     isLeft
@@ -56,7 +79,7 @@ const Slider = () => {
                     <CaroselComponent
                         activeIndex={activeIndex}
                         direction={direction}
-                        products={products}
+                        products={filteredProducts}
                     />
                 </div>
                 <NavigateArrow

@@ -5,9 +5,12 @@
 
 .left {
   position: absolute;
-  left: 200px;
-  animation-name: left-animation;
+  left: 300px;
   animation-duration: 0.5s;
+}
+
+.left-next {
+  animation-name: left-animation;
 }
 
 @keyframes left-animation {
@@ -15,7 +18,23 @@
     left: 40%;
   }
   100% {
-    left: 200px;
+    left: 300px;
+  }
+}
+
+.left-2 {
+  animation-name: left-animation-2;
+  opacity: 0;
+}
+
+@keyframes left-animation-2 {
+  0% {
+    opacity: 1;
+    left: 300px;
+  }
+  100% {
+    opacity: 0;
+    left: 150px;
   }
 }
 
@@ -29,36 +48,39 @@
 @keyframes left-animation-image {
   0% {
     height: 400px;
-    opacity: 0;
   }
   100% {
     height: 350px;
-    opacity: 1;
   }
 }
 
-.left-prev {
-  position: absolute;
-  left: 200px;
+left-image-2 {
+  animation-name: left-animation-image-2;
+  height: 0px;
+  width: 0px;
+}
+
+@keyframes left-animation-image-2 {
+  0% {
+    height: 350px;
+    width: 300px;
+  }
+  100% {
+    height: 100px;
+    width: 100px;
+  }
 }
 
 .left-image-prev {
   animation-name: left-image-animation-prev;
-  animation-duration: 0.5s;
-  height: 350px;
-  width: 300px;
 }
 
 @keyframes left-image-animation-prev {
   0% {
     opacity: 0;
-    height: 100px;
-    width: 100px;
   }
   100% {
     opacity: 1;
-    height: 350px;
-    width: 300px;
   }
 }
 
@@ -102,11 +124,9 @@
 
 .center-prev {
   animation-name: center-animation-prev;
-  animation-duration: 0.5s;
-  z-index: 1;
 }
 
-@keyframes center-animation-prev{
+@keyframes center-animation-prev {
   0% {
     margin-left: -50%;
   }
@@ -117,8 +137,25 @@
 
 .right {
   position: absolute;
-  right: 200px;
-  /* z-index: -1; */
+  right: 300px;
+  animation-duration: 0.5s;
+}
+
+.right-2 {
+  animation-name: right-animation-2;
+  opacity: 0;
+  /* right: 150px; */
+}
+
+@keyframes right-animation-2 {
+  0% {
+    opacity: 1;
+    right: 300px;
+  }
+  100% {
+    opacity: 0;
+    right: 150px;
+  }
 }
 
 .right-image {
@@ -131,22 +168,31 @@
 @keyframes right-animation {
   0% {
     opacity: 0;
-    height: 100px;
-    width: 100px;
   }
   100% {
     opacity: 1;
+  }
+}
+
+.right-image-2 {
+  animation-name: right-animation-image-2;
+  height: 0px;
+  width: 0px;
+}
+
+@keyframes right-animation-image-2 {
+  0% {
     height: 350px;
     width: 300px;
+  }
+  100% {
+    height: 100px;
+    width: 100px;
   }
 }
 
 .right-prev {
-  position: absolute;
-  right: 200px;
-  /* z-index: -1; */
   animation-name: right-animation-prev;
-  animation-duration: 0.5s;
 }
 
 @keyframes right-animation-prev {
@@ -154,15 +200,12 @@
     right: 40%;
   }
   100% {
-    right: 200px;
+    right: 300px;
   }
 }
 
 .right-image-prev {
   animation-name: right-image-animation-prev;
-  animation-duration: 0.5s;
-  height: 350px;
-  width: 300px;
 }
 
 @keyframes right-image-animation-prev {
@@ -224,6 +267,7 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  padding: 20px;
 }
 
 .loader {
@@ -236,19 +280,32 @@
   position: absolute;
   top: 50%;
   left: 50%;
-
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 h5 {
   margin: 0;
-  text-align: center;
+  text-align: left;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  width: 15em;
+  white-space: nowrap;
 }
-  
+
+h4 {
+  margin: 0;
+  text-align: right;
+  color: rgb(218, 85, 90);
+}
+
 p {
   margin: 0;
 }
@@ -260,10 +317,12 @@ p {
   align-items: center;
   justify-content: center;
   padding: 20px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 10px;
 }
 
 .blur {
-  filter: blur(2px);
+  filter: blur(1px);
 }
 
 .card-image {
@@ -278,8 +337,35 @@ p {
 .information {
   display: flex;
   flex-direction: column;
+  /* padding: 10px 35px 10px 35px; */
+  align-items: flex-start;
+  /* width: 95%; */
+}
+
+.information-parent {
+  display: flex;
   padding: 10px 35px 10px 35px;
   align-items: flex-start;
   width: 95%;
+  justify-content: space-between;
 }
 
+.filter {
+  align-self: flex-end;
+  margin-right: 150px;
+  font-weight: bold;
+}
+
+select {
+  height: 50px;
+  margin-left: 20px;
+  padding: 10px;
+}
+
+select:hover {
+  cursor: pointer;
+}
+
+.backArrow:hover {
+  cursor: pointer;
+}

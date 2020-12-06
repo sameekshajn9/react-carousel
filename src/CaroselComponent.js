@@ -7,37 +7,51 @@ const CarouselComponent = (props) => {
     const nextIndex = activeIndex + 1 < products.length ? activeIndex + 1 : 0;
     return (
         <div className='image-slider'>
-            {/* {
-                    Data[prevIndex - 1] && <div className={"left-lost"}
-                        key={prevIndex - 1}>
-                        <img className="left-lost-image" src={Data[prevIndex - 1].image} />
-                    </div>
+            {
+                direction === Directions.showNext && products[prevIndex - 1] &&
+                <div
+                    className={`left ${direction === Directions.showNext ? "left-2" : ""}`}
+                    key={prevIndex - 1}>
+                    <CardComponent className={`left-image ${direction === Directions.showNext ? "left-image-2" : "left-image-prev"}`}
+                        product={products[prevIndex - 1]} />
+                </div>
 
-                } */}
+            }
             {
                 products[prevIndex] &&
                 <div
-                    className={direction === Directions.showNext ? "left" : "left-prev"}
+                    className={`left ${direction === Directions.showNext ? "left-next" : ""}`}
                     key={prevIndex}>
-                    <CardComponent className={direction === Directions.showNext ? "left-image" : "left-image-prev"}
+                    <CardComponent className={`left-image ${direction === Directions.showNext ? "" : "left-image-prev"}`}
                         product={products[prevIndex]} />
                 </div>
 
             }
             {
                 products[activeIndex] &&
-                <div className={direction === Directions.showNext ? "center" : "center-prev"}
+                <div className={`center ${direction === Directions.showNext ? "" : "center-prev"}`}
                     key={activeIndex}>
-                    <CardComponent className={direction === Directions.showNext ? "center-image" : "center-image-prev"}
-                        product={products[activeIndex]} isCenter/>
+                    <CardComponent className={`center-image`}
+                        product={products[activeIndex]} isCenter />
                 </div>
             }
             {
+                direction === Directions.showPrev && products[nextIndex + 1] &&
+                <div
+                    id="left-div"
+                    className={`right ${direction === Directions.showPrev ? "right-2" : ""}`}
+                    key={nextIndex + 1}>
+                    <CardComponent className={`right-image ${direction === Directions.showNext ? "right-image-2" : "right-image-prev"}`}
+                        product={products[nextIndex + 1]} />
+                </div>
+
+            }
+            {
                 products[nextIndex] &&
-                <div className={direction === Directions.showNext ? "right" : "right-prev"}
+                <div className={`right ${direction === Directions.showNext ? "" : "right-prev"}`}
                     key={nextIndex}>
                     <CardComponent product={products[nextIndex]}
-                        className={direction === Directions.showNext ? "right-image" : "right-image-prev"} />
+                        className={`right-image ${direction === Directions.showNext ? "" : "right-image-prev"}`} />
                 </div>
             }
         </div>

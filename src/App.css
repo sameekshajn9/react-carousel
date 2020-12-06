@@ -1,38 +1,285 @@
 .App {
-  text-align: center;
+  background-color: rgb(215, 154, 188);
+  height: 100vh;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.left {
+  position: absolute;
+  left: 200px;
+  animation-name: left-animation;
+  animation-duration: 0.5s;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+@keyframes left-animation {
+  0% {
+    left: 40%;
+  }
+  100% {
+    left: 200px;
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.left-image {
+  animation-name: left-animation-image;
+  animation-duration: 0.5s;
+  height: 350px;
+  width: 300px;
+}
+
+@keyframes left-animation-image {
+  0% {
+    height: 400px;
+    opacity: 0;
+  }
+  100% {
+    height: 350px;
+    opacity: 1;
+  }
+}
+
+.left-prev {
+  position: absolute;
+  left: 200px;
+}
+
+.left-image-prev {
+  animation-name: left-image-animation-prev;
+  animation-duration: 0.5s;
+  height: 350px;
+  width: 300px;
+}
+
+@keyframes left-image-animation-prev {
+  0% {
+    opacity: 0;
+    height: 100px;
+    width: 100px;
+  }
+  100% {
+    opacity: 1;
+    height: 350px;
+    width: 300px;
+  }
+}
+
+.center {
+  animation-name: center-animation;
+  animation-duration: 0.5s;
+  z-index: 1;
+}
+
+@keyframes center-animation {
+  0% {
+    margin-right: -50%;
+  }
+  100% {
+    margin-right: 0px;
+  }
+}
+
+.center-image {
+  animation-name: center-image-animation;
+  animation-duration: 0.5s;
+  height: 400px;
+  width: 300px;
+}
+
+.center-image-prev {
+  animation-name: center-image-animation;
+  animation-duration: 0.5s;
+  height: 400px;
+  width: 300px;
+}
+
+@keyframes center-image-animation {
+  0% {
+    height: 350px;
+  }
+  100% {
+    height: 400px;
+  }
+}
+
+.center-prev {
+  animation-name: center-animation-prev;
+  animation-duration: 0.5s;
+  z-index: 1;
+}
+
+@keyframes center-animation-prev{
+  0% {
+    margin-left: -50%;
+  }
+  100% {
+    margin-left: 0px;
+  }
+}
+
+.right {
+  position: absolute;
+  right: 200px;
+  /* z-index: -1; */
+}
+
+.right-image {
+  animation-name: right-animation;
+  animation-duration: 0.5s;
+  height: 350px;
+  width: 300px;
+}
+
+@keyframes right-animation {
+  0% {
+    opacity: 0;
+    height: 100px;
+    width: 100px;
+  }
+  100% {
+    opacity: 1;
+    height: 350px;
+    width: 300px;
+  }
+}
+
+.right-prev {
+  position: absolute;
+  right: 200px;
+  /* z-index: -1; */
+  animation-name: right-animation-prev;
+  animation-duration: 0.5s;
+}
+
+@keyframes right-animation-prev {
+  0% {
+    right: 40%;
+  }
+  100% {
+    right: 200px;
+  }
+}
+
+.right-image-prev {
+  animation-name: right-image-animation-prev;
+  animation-duration: 0.5s;
+  height: 350px;
+  width: 300px;
+}
+
+@keyframes right-image-animation-prev {
+  0% {
+    opacity: 0;
+    height: 400px;
+  }
+  100% {
+    opacity: 1;
+    height: 350px;
+  }
+}
+
+.slider {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  padding: 100px 0px 0px 0px;
+}
+
+.slider-items {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  align-items: center;
+  width: 100%;
+  justify-content: center;
+}
+
+.slider-text {
+  width: 80%;
+}
+
+.slider-right-enter {
+  transform: translateX(100%);
+}
+
+.slider-right-enter-active {
+  transform: translateY(0%);
+  transform: transform 1000ms ease-in-out;
+}
+
+.slider-right-exit {
+  transform: translateX(0%);
+}
+
+.slider-right-exit-active {
+  transform: translateY(-100%);
+  transform: transform 1000ms ease-in-out;
+}
+
+.image-slider {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.loader {
+  border: 10px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 10px solid #3498db;
+  width: 60px;
+  height: 60px;
+  animation: spin 1s linear infinite;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+h5 {
+  margin: 0;
+  text-align: center;
+}
+  
+p {
+  margin: 0;
+}
+
+.card {
+  background-color: white;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  padding: 20px;
 }
 
-.App-link {
-  color: #61dafb;
+.blur {
+  filter: blur(2px);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.card-image {
+  border: 1px solid gray;
+  padding: 10px;
 }
+
+.shadow {
+  box-shadow: 5px 10px 20px lightgray inset;
+}
+
+.information {
+  display: flex;
+  flex-direction: column;
+  padding: 10px 35px 10px 35px;
+  align-items: flex-start;
+  width: 95%;
+}
+

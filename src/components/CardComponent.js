@@ -9,6 +9,7 @@ const CardComponent = (props) => {
         height={isCenter ? "300px" : "250px"}
         src={product.image}
         className="card-image"
+        alt={product.image}
       />
       <div className="information-parent">
         <div className="information">
@@ -18,9 +19,7 @@ const CardComponent = (props) => {
           </p>
           <p className="product-category">Category: {product.category}</p>
         </div>
-        <p className="product-price">
-          &#8377; {product.price}
-        </p>
+        <p className="product-price">&#8377; {product.price}</p>
       </div>
     </div>
   );

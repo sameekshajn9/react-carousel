@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import CaroselComponent from "./CaroselComponent";
+import React, { useEffect, useState, usePr } from "react";
+import CarouselComponent from "./CarouselComponent";
 import NavigateArrow from "./NavigateArrow";
 import { Directions } from "../Constants";
 
@@ -10,6 +10,10 @@ const Slider = ({ selectedFilter, activeIndex, products, setActiveIndex }) => {
   if (selectedFilter !== "All") {
     filteredProducts = products.filter((f) => f.category === selectedFilter);
   }
+
+  useEffect(() => {
+    setDirection(Directions.showPrev)
+  }, [selectedFilter])
 
   const goToPrevSlide = () => {
     let index = activeIndex;
@@ -39,7 +43,7 @@ const Slider = ({ selectedFilter, activeIndex, products, setActiveIndex }) => {
     <div className="slider-items">
       <NavigateArrow isLeft action={goToPrevSlide} />
       <div className="slider-text">
-        <CaroselComponent
+        <CarouselComponent
           activeIndex={activeIndex}
           direction={direction}
           products={filteredProducts}
@@ -47,7 +51,6 @@ const Slider = ({ selectedFilter, activeIndex, products, setActiveIndex }) => {
       </div>
       <NavigateArrow action={goToNextSlide} isLeft={false} />
     </div>
-    // </div>
   );
 };
 

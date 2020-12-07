@@ -11,14 +11,14 @@ const CarouselComponent = (props) => {
       {direction === Directions.showNext && products[prevIndex - 1] && (
         <div
           className={`left ${
-            direction === Directions.showNext ? "left-2" : ""
+            direction === Directions.showNext ? "left-lost" : ""
           }`}
           key={prevIndex - 1}
         >
           <CardComponent
             className={`left-image ${
               direction === Directions.showNext
-                ? "left-image-2"
+                ? "left-lost-image"
                 : "left-image-prev"
             }`}
             product={products[prevIndex - 1]}
@@ -58,14 +58,14 @@ const CarouselComponent = (props) => {
         <div
           id="left-div"
           className={`right ${
-            direction === Directions.showPrev ? "right-2" : ""
+            direction === Directions.showPrev ? "right-lost" : ""
           }`}
           key={nextIndex + 1}
         >
           <CardComponent
             className={`right-image ${
               direction === Directions.showPrev
-                ? "right-image-2"
+                ? "right-lost-image"
                 : "right-image-prev"
             }`}
             product={products[nextIndex + 1]}

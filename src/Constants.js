@@ -1,4 +1,4 @@
 export const Directions = {
-    showNext: 0,
-    showPrev: 1
-}
+  showNext: 0,
+  showPrev: 1,
+};

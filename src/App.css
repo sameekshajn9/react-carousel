@@ -1,12 +1,27 @@
 .App {
-  background-color: rgb(215, 154, 188);
+  /* background-color: rgb(215, 154, 188); */
+  background-color: rgb(154 215 207 / 38%);
   height: 100vh;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.top-bar {
+  flex-direction: row;
+  display: flex;
+  width: 80%;
+  align-self: center;
+  align-items: center;
+  position: relative;
+  justify-content: center;
 }
 
 .left {
   position: absolute;
-  left: 300px;
   animation-duration: 0.5s;
+  transform: translateX(-85%);
 }
 
 .left-next {
@@ -15,10 +30,12 @@
 
 @keyframes left-animation {
   0% {
-    left: 40%;
+    /* left: 40%; */
+    transform: translateX(-43%);
   }
   100% {
-    left: 300px;
+    /* left: 300px; */
+    transform: translateX(-85%);
   }
 }
 
@@ -30,11 +47,12 @@
 @keyframes left-animation-2 {
   0% {
     opacity: 1;
-    left: 300px;
+    /* left: 300px; */
+    transform: translateX(-85%);
   }
   100% {
     opacity: 0;
-    left: 150px;
+    transform: translateX(-300%);
   }
 }
 
@@ -54,7 +72,7 @@
   }
 }
 
-left-image-2 {
+.left-image-2 {
   animation-name: left-animation-image-2;
   height: 0px;
   width: 0px;
@@ -137,8 +155,8 @@ left-image-2 {
 
 .right {
   position: absolute;
-  right: 300px;
   animation-duration: 0.5s;
+  transform: translateX(85%);
 }
 
 .right-2 {
@@ -150,11 +168,13 @@ left-image-2 {
 @keyframes right-animation-2 {
   0% {
     opacity: 1;
-    right: 300px;
+    /* right: 300px; */
+    transform: translateX(85%);
   }
   100% {
     opacity: 0;
-    right: 150px;
+    transform: translateX(300%);
+    /* right: 150px; */
   }
 }
 
@@ -197,10 +217,12 @@ left-image-2 {
 
 @keyframes right-animation-prev {
   0% {
-    right: 40%;
+    /* right: 40%; */
+    transform: translateX(43%);
   }
   100% {
-    right: 300px;
+    /* right: 300px; */
+    transform: translateX(85%);
   }
 }
 
@@ -210,11 +232,11 @@ left-image-2 {
 
 @keyframes right-image-animation-prev {
   0% {
-    opacity: 0;
+    /* opacity: 0; */
     height: 400px;
   }
   100% {
-    opacity: 1;
+    /* opacity: 1; */
     height: 350px;
   }
 }
@@ -226,7 +248,7 @@ left-image-2 {
   align-items: center;
   text-align: center;
   width: 100%;
-  padding: 100px 0px 0px 0px;
+  /* padding: 100px 0px 0px 0px; */
 }
 
 .slider-items {
@@ -267,7 +289,7 @@ left-image-2 {
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  padding: 20px;
+  padding: 20px 0px;
 }
 
 .loader {
@@ -291,13 +313,48 @@ left-image-2 {
   }
 }
 
-h5 {
+.product-title {
   margin: 0;
   text-align: left;
   text-overflow: ellipsis;
   overflow: hidden;
-  width: 15em;
+  width: 12em;
   white-space: nowrap;
+  font-family: cursive;
+}
+
+.product-title .tooltiptext {
+  visibility: hidden;
+  background-color: black;
+  padding: 10px;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+  bottom: 100%;
+  left: -10%;
+}
+
+.product-title:hover .tooltiptext {
+  visibility: visible;
+}
+
+.product-category {
+  color: grey;
+}
+
+.product-price {
+  font-size: 22px;
+  color: #49a0de;
+}
+
+.filter-text {
+  font-family: serif;
+  font-size: 18px;
+  letter-spacing: 1px;
 }
 
 h4 {
@@ -326,8 +383,9 @@ p {
 }
 
 .card-image {
-  border: 1px solid gray;
   padding: 10px;
+  box-shadow: 2px 2px 5px #49a0deba;
+  /* box-shadow: 1px 1px 10px black; */
 }
 
 .shadow {
@@ -339,27 +397,35 @@ p {
   flex-direction: column;
   /* padding: 10px 35px 10px 35px; */
   align-items: flex-start;
+  position: relative;
   /* width: 95%; */
 }
 
 .information-parent {
   display: flex;
-  padding: 10px 35px 10px 35px;
+  padding: 20px 35px 10px 35px;
   align-items: flex-start;
   width: 95%;
   justify-content: space-between;
 }
 
 .filter {
-  align-self: flex-end;
-  margin-right: 150px;
+  align-self: center;
   font-weight: bold;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  right: 0px;
 }
 
 select {
   height: 50px;
   margin-left: 20px;
   padding: 10px;
+  border-radius: 7px;
+  box-shadow: 2px 2px 5px grey;
+  border: none;
 }
 
 select:hover {
